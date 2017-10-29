@@ -1,11 +1,24 @@
 // @flow
-import React, { Component } from 'react';
-import Home from '../components/Home';
+import React from 'react';
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
-export default class HomePage extends Component {
+import {testneo} from "../actions/blockchain";
+
+class HomePage extends React.Component {
   render() {
+    this.props.testneo();
+
     return (
-      <Home />
+      <div className="window-content">
+        Some dashboard stuff here.
+      </div>
     );
   }
 }
+
+export default connect(null,
+  (dispatch) => ({
+    testneo: bindActionCreators(testneo, dispatch),
+  })
+)(HomePage);
