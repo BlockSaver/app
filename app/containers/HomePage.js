@@ -7,11 +7,15 @@ import {testneo} from "../actions/blockchain";
 
 class HomePage extends React.Component {
   render() {
-    this.props.testneo();
+    // this.props.testneo();
 
     return (
       <div className="window-content">
-        Some dashboard stuff here.
+        <div className="pane-group">
+          <div className="pane pane-one-third sidebar">
+            <button className="btn btn-large btn-default">Load wallet</button>
+          </div>
+        </div>
       </div>
     );
   }
