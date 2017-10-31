@@ -1,5 +1,7 @@
 @import "~font-awesome/css/font-awesome.css";
 @import "style/photon/css/photon.min.css";
+@import "style/stripe.css";
+@import "style/common.css";
 
 body {
   position: relative;

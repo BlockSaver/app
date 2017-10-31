@@ -22,10 +22,12 @@ export class Header extends React.Component {
               </button>
             </Link>
 
-            <button className="btn btn-default">
-              <span className="icon icon-cog icon-text"></span>
-              Settings
-            </button>
+            <Link to="/settings">
+              <button className="btn btn-default">
+                <span className="icon icon-cog icon-text"></span>
+                Settings
+              </button>
+            </Link>
           </div>
 
           <button className="btn btn-default pull-right">
