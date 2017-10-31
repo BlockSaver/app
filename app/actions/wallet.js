@@ -23,14 +23,21 @@ export function testneo() {
 }
 
 export function loadWallet(wif) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     const account = Neon.getAccountFromWIFKey(wif);
-    if (Neon.verifyAddress(account.address)) {
-      return dispatch({
-        type: VERIFIED_WALLET,
-      });
+
+    if (!!account) {
+      const verified = Neon.verifyAddress(account.address);
+      if (verified) {
+        return dispatch({
+          type: VERIFIED_WALLET,
+          account,
+        });
+      } else {
+        alert("Bad NEO address.");
+      }
     } else {
-      alert("Bad NEO address.");
+      alert("Bad key");
     }
   }
 }

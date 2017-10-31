@@ -1,19 +1,36 @@
 // @flow
 import React from 'react';
 import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
 
-import {testneo} from "../actions/blockchain";
+import LoadWalletForm from "../components/LoadWalletForm";
 
 class HomePage extends React.Component {
-  render() {
-    // this.props.testneo();
+  constructor(props) {
+    super(props);
+    this.state = {
+      showKeyInput: false,
+    };
 
+    this.onLoadWalletClick = this.onLoadWalletClick.bind(this);
+  }
+
+  onLoadWalletClick() {
+    this.setState({ showKeyInput: !this.state.showKeyInput })
+  }
+
+  render() {
     return (
       <div className="window-content">
         <div className="pane-group">
           <div className="pane pane-one-third sidebar">
-            <button className="btn btn-large btn-default">Load wallet</button>
+            <button
+              onClick={this.onLoadWalletClick}
+              className="btn btn-large btn-default"
+            >Load wallet</button>
+
+            {this.state.showKeyInput ?
+              <LoadWalletForm />
+              : null}
           </div>
         </div>
       </div>
@@ -23,6 +40,5 @@ class HomePage extends React.Component {
 
 export default connect(null,
   (dispatch) => ({
-    testneo: bindActionCreators(testneo, dispatch),
   })
 )(HomePage);
