@@ -38,6 +38,6 @@ export class UserDetailsForm extends React.Component {
 
         <button className="btn btn-large btn-primary">Save</button>
       </form>
-    )
+    );
   }
 }

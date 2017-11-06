@@ -2,6 +2,7 @@
 @import "style/photon/css/photon.min.css";
 @import "style/stripe.css";
 @import "style/common.css";
+@import '/node_modules/react-datepicker/dist/react-datepicker.css';
 
 body {
   position: relative;
