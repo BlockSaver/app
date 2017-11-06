@@ -1,26 +1,10 @@
-import * as neo from "neo-api";
+// import * as neo from "neo-api";
 import * as Neon from "neon-js";
 import {ab2hexstring} from "neon-js/src/utils";
 
-const network = "TestNet";
+const network = Neon.getAPIEndpoint('TestNet');
 export const VERIFIED_WALLET = "VERIFIED_WALLET";
 export const PAYMENT_SUCCESS = "PAYMENT_SUCCESS";
-
-export function testneo() {
-  return (dispatch, getState) => {
-    /*const node = neo.node('http://188.226.138.245:20333/');
-    node.getBlockCount().then(function (result) {
-      console.log(result);
-    });*/
-
-    const privateKey = ab2hexstring(Neon.generatePrivateKey());
-    const wif = Neon.getWIFFromPrivateKey(privateKey);
-    console.log("Wif:", wif);
-    const account = Neon.getAccountFromWIFKey(wif);
-    console.log(account);
-
-  };
-}
 
 export function loadWallet(wif) {
   return (dispatch) => {
@@ -42,7 +26,7 @@ export function loadWallet(wif) {
   }
 }
 
-export function sendNEO(amount) {
+/*export function sendNEO(amount) {
   return (dispatch, getState) => {
     const state = getState();
     const address = state.wallet.address;
@@ -63,4 +47,4 @@ export function sendNEO(amount) {
         alert(e.message);
       })
   }
-}
+}*/

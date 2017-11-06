@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
+import {Redirect} from "react-router";
+
 import {loadWallet} from "../actions/wallet";
 
 
@@ -26,25 +28,35 @@ class LoadWalletForm extends React.Component {
   }
 
   render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <div className="form-control margin-15-vertical">
-          <input
-            type="text"
-            name="wif"
-            placeholder="Enter private key (WIF)"
-            onChange={this.handleKeyChange}
-            style={{ width: "100%" }}
-          />
-        </div>
+    const { wallet } = this.props;
 
-        <button className="btn btn-positive btn-large">Login</button>
-      </form>
-    );
+    if (wallet && wallet.address ) {
+      return (
+        <div>Successfully loaded: {wallet.address}.</div>
+      );
+    } else {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <div className="form-control margin-15-vertical">
+            <input
+              type="text"
+              name="wif"
+              placeholder="Enter private key (WIF)"
+              onChange={this.handleKeyChange}
+              style={{ width: "100%" }}
+            />
+          </div>
+
+          <button className="btn btn-positive btn-large">Login</button>
+        </form>
+      );
+    }
   }
 }
 
 export default connect(
-  null, {
+  (state) => ({
+    wallet: state.wallet,
+  }),{
     loadWallet,
   })(LoadWalletForm);
