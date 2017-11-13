@@ -21,13 +21,6 @@ export class Header extends React.Component {
                 Savings
               </button>
             </Link>
-
-            <Link to="/settings">
-              <button className="btn btn-default">
-                <span className="icon icon-cog icon-text"></span>
-                Settings
-              </button>
-            </Link>
           </div>
 
           <Link to="/savings/new">

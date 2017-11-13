@@ -1,32 +1,29 @@
-// import * as neo from "neo-api";
-import * as Neon from "neon-js";
-import {ab2hexstring} from "neon-js/src/utils";
 
-const network = Neon.getAPIEndpoint('TestNet');
-export const VERIFIED_WALLET = "VERIFIED_WALLET";
-export const PAYMENT_SUCCESS = "PAYMENT_SUCCESS";
+import * as Neon from 'neon-js';
+import { ab2hexstring } from 'neon-js/src/utils';
+export const VERIFIED_WALLET = 'VERIFIED_WALLET';
+export const PAYMENT_SUCCESS = 'PAYMENT_SUCCESS';
 
 export function loadWallet(wif) {
   return (dispatch) => {
     const account = Neon.getAccountFromWIFKey(wif);
 
-    if (!!account) {
+    if (account) {
       const verified = Neon.verifyAddress(account.address);
       if (verified) {
         return dispatch({
           type: VERIFIED_WALLET,
           account,
         });
-      } else {
-        alert("Bad NEO address.");
       }
+      alert('Bad NEO address.');
     } else {
-      alert("Bad key");
+      alert('Bad key');
     }
-  }
+  };
 }
 
-/*export function sendNEO(amount) {
+/* export function sendNEO(amount) {
   return (dispatch, getState) => {
     const state = getState();
     const address = state.wallet.address;
