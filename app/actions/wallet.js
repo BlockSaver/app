@@ -3,8 +3,14 @@ import * as Neon from 'neon-js';
 export const VERIFIED_WALLET = 'VERIFIED_WALLET';
 export const PAYMENT_SUCCESS = 'PAYMENT_SUCCESS';
 
+export const WIF_LENGTH = 52;
+
 export function loadWallet(wif) {
   return (dispatch) => {
+    if (wif || wif.length !== WIF_LENGTH) {
+      alert(`WIF address must have exactly ${WIF_LENGTH} characters!`);
+      return;
+    }
     const account = Neon.getAccountFromWIFKey(wif);
     console.log('account:', account);
     if (account) {

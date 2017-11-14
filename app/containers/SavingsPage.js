@@ -14,6 +14,7 @@ class SavingsPage extends React.Component {
   componentWillMount() {
     console.log('wallet:', this.wallet);
     if (this.wallet === null) {
+      alert('To see existings savings, wallet must be loaded!');
       console.log('need wallet loading');
       this.history.push('/');
     }
