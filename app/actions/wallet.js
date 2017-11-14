@@ -7,11 +7,17 @@ export const WIF_LENGTH = 52;
 
 export function loadWallet(wif) {
   return (dispatch) => {
-    if (wif || wif.length !== WIF_LENGTH) {
+    if (!wif || wif.length !== WIF_LENGTH) {
       alert(`WIF address must have exactly ${WIF_LENGTH} characters!`);
       return;
     }
-    const account = Neon.getAccountFromWIFKey(wif);
+    let account;
+    try {
+      account = Neon.getAccountFromWIFKey(wif);
+    } catch (err) {
+      alert(`Bad wif address ${err}`);
+      return;
+    }
     console.log('account:', account);
     if (account) {
       const verified = Neon.verifyAddress(account.address);
