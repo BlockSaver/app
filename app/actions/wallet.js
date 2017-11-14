@@ -1,13 +1,12 @@
-
 import * as Neon from 'neon-js';
-import { ab2hexstring } from 'neon-js/src/utils';
+
 export const VERIFIED_WALLET = 'VERIFIED_WALLET';
 export const PAYMENT_SUCCESS = 'PAYMENT_SUCCESS';
 
 export function loadWallet(wif) {
   return (dispatch) => {
     const account = Neon.getAccountFromWIFKey(wif);
-
+    console.log('account:', account);
     if (account) {
       const verified = Neon.verifyAddress(account.address);
       if (verified) {

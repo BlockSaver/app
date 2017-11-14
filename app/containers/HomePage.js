@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 
-import LoadWalletForm from "../components/LoadWalletForm";
+import LoadWalletForm from '../components/LoadWalletForm';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class HomePage extends React.Component {
   }
 
   onLoadWalletClick() {
-    this.setState({ showKeyInput: !this.state.showKeyInput })
+    this.setState({ showKeyInput: !this.state.showKeyInput });
   }
 
   render() {

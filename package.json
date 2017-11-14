@@ -191,7 +191,8 @@
     "react-stripe-elements": "^1.2.0",
     "redux": "^3.7.1",
     "redux-thunk": "^2.2.0",
-    "source-map-support": "^0.4.15"
+    "source-map-support": "^0.4.15",
+    "prop-types": "latest"
   },
   "devEngines": {
     "node": ">=7.x",
