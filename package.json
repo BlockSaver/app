@@ -179,6 +179,7 @@
     "moment": "^2.19.1",
     "neo-api": "git+ssh://git@github.com/CityOfZion/neo-api-js.git",
     "neon-js": "git+ssh://git@github.com/CityOfZion/neon-js.git",
+    "prop-types": "^15.6.0",
     "react": "^15.6.1",
     "react-datepicker": "^0.60.0",
     "react-dom": "^15.6.1",
@@ -191,8 +192,7 @@
     "react-stripe-elements": "^1.2.0",
     "redux": "^3.7.1",
     "redux-thunk": "^2.2.0",
-    "source-map-support": "^0.4.15",
-    "prop-types": "latest"
+    "source-map-support": "^0.4.15"
   },
   "devEngines": {
     "node": ">=7.x",

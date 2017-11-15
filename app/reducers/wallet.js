@@ -5,6 +5,6 @@ export default function wallet(state = {}, action) {
     case VERIFIED_WALLET:
       return action.account;
     default:
-      return null;
+      return state;
   }
 }

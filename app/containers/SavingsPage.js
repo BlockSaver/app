@@ -3,20 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class SavingsPage extends React.Component {
-
-  constructor(props) {
-    super(props);
-    const { wallet, history } = this.props;
-    this.wallet = wallet;
-    this.history = history;
-  }
-
   componentWillMount() {
-    console.log('wallet:', this.wallet);
-    if (this.wallet === null) {
+    if (!this.props.wallet.address) {
       alert('To see existings savings, wallet must be loaded!');
-      console.log('need wallet loading');
-      this.history.push('/');
+      this.props.history.push('/');
     }
   }
 
@@ -59,11 +49,6 @@ SavingsPage.propTypes = {
   history: PropTypes.object.isRequired
 };
 
-SavingsPage.defaultProps = {
-  wallet: {
-    test: 'test'
-  }
-};
 
 export default connect(
   (state) => ({
