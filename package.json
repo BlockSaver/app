@@ -172,10 +172,13 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "devtron": "^1.4.0",
     "electron-debug": "^1.2.0",
+    "es6-promise": "^4.1.1",
     "font-awesome": "^4.7.0",
     "history": "^4.6.3",
+    "isomorphic-fetch": "^2.2.1",
     "moment": "^2.19.1",
     "neo-api": "git+ssh://git@github.com/CityOfZion/neo-api-js.git",
     "neon-js": "git+ssh://git@github.com/CityOfZion/neon-js.git",

@@ -58,7 +58,7 @@ class CardForm extends React.Component {
     };
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div>
         <div className="form-group">
           <label style={{ width: "240px" }}>
             Card number
@@ -77,23 +77,9 @@ class CardForm extends React.Component {
             <CardCVCElement {...options} />
           </label>
         </div>
-
-        <div className="form-group">
-          <label>
-            Postal code
-            <PostalCodeElement {...options} />
-          </label>
-        </div>
-
-        <button className="btn btn-large btn-primary">Save</button>
-      </form>
-    )
+      </div>
+    );
   }
 }
 
-const CardFormRedux = connect(
-  null, {
-    postCardDetails,
-  })(CardForm);
-
-export default injectStripe(CardFormRedux);
+export default injectStripe(CardForm);

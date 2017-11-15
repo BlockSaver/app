@@ -2,6 +2,10 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import {connect} from "react-redux";
+import {Elements} from 'react-stripe-elements';
+
+import CardForm from "../components/CardForm";
+import {createNewSavings} from "../actions/savings";
 
 class SavingsForm extends React.Component {
   constructor(props) {
@@ -10,11 +14,15 @@ class SavingsForm extends React.Component {
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleAmountChange = this.handleAmountChange.bind(this);
     this.handleEndTimeChange = this.handleEndTimeChange.bind(this);
+    this.handleIntervalChange = this.handleIntervalChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
 
     this.state = {
       address: this.props.wallet ? this.props.wallet.address : '',
       endTime: moment(),
-      amount: '',
+      amount: 15,
+      name: '',
+      interval: 1,
     };
   }
 
@@ -24,7 +32,10 @@ class SavingsForm extends React.Component {
 
     if (this.state.endTime < moment()) {
       alert('Wrong saving date.');
+      return false;
     }
+
+    this.props.createNewSavings(this.state, this.props.wallet.privateKey);
   }
 
   handleAddressChange(e) {
@@ -37,6 +48,21 @@ class SavingsForm extends React.Component {
 
   handleAmountChange(e) {
     this.setState({ amount: e.target.value });
+  }
+
+  handleIntervalChange(e) {
+    this.setState({ interval: e.target.value });
+  }
+
+  handleNameChange(e) {
+    this.setState({ name: e.target.value });
+  }
+
+  componentWillMount() {
+    if (!this.props.wallet.address) {
+      alert('To see existings savings, wallet must be loaded!');
+      this.props.history.push('/');
+    }
   }
 
   render() {
@@ -53,6 +79,18 @@ class SavingsForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label className="Input">
+                  Savings name <br />
+                  <input
+                    type="text"
+                    name="name"
+                    style={{ width: '280px' }}
+                    onChange={this.handleNameChange}
+                  />
+                </label>
+
+                <br />
+
+                <label className="Input">
                   Address for withdraw <br />
                   <input
                     type="text"
@@ -66,25 +104,45 @@ class SavingsForm extends React.Component {
 
               <div className="form-group">
                 <label className="Input">
+                  End time <br />
+                  <DatePicker
+                    selected={this.state.endTime}
+                    onChange={this.handleEndTimeChange}
+                    showTimeSelect
+                    dateFormat="LLL"
+                    timeIntervals={2}
+                  />
+
+                  <label className="Input">
+                    Interval between payments <br />
+                    <input
+                      type="text"
+                      name="interval"
+                      placeholder="Enter minutes for testing phase"
+                      style={{ width: '160px' }}
+                      onChange={this.handleIntervalChange}
+                    />
+                  </label>
+                </label>
+              </div>
+
+              <div className="form-group">
+                <div>Payment details</div>
+
+                <label className="Input">
                   Monthly amount (USD) <br />
                   <input
                     type="text"
                     name="amount"
                     placeholder="15"
-                    style={{ width: '80px' }}
+                    style={{ width: '160px' }}
                     onChange={this.handleAmountChange}
                   />
                 </label>
-              </div>
 
-              <div className="form-group">
-                <label className="Input">
-                  End time <br />
-                  <DatePicker
-                    selected={this.state.endTime}
-                    onChange={this.handleEndTimeChange}
-                  />
-                </label>
+                <Elements>
+                  <CardForm />
+                </Elements>
               </div>
 
               <button className="btn btn-large btn-primary">Save</button>
@@ -101,5 +159,6 @@ export default connect(
     wallet: state.wallet,
   }),
   ({
+    createNewSavings,
   })
 )(SavingsForm);

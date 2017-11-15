@@ -18,7 +18,6 @@ export function loadWallet(wif) {
       alert(`Bad wif address ${err}`);
       return;
     }
-    console.log('account:', account);
     if (account) {
       const verified = Neon.verifyAddress(account.address);
       if (verified) {
