@@ -28,7 +28,6 @@ class SavingsForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
 
     if (this.state.endTime < moment()) {
       alert('Wrong saving date.');
@@ -67,6 +66,9 @@ class SavingsForm extends React.Component {
 
   render() {
     const { wallet } = this.props;
+    const currentDate = new Date();
+    const endDate = new Date(this.state.endTime);
+    const estimatedEarnings = new Date(currentDate.getTime() - endDate.getTime()).getMonth() * 0.1 * this.state.amount;
 
     return (
       <div className="window-content">
@@ -161,6 +163,8 @@ class SavingsForm extends React.Component {
                   <Elements>
                     <CardForm />
                   </Elements>
+
+                  <p style={{ color: "#686868"}}>{`Estimated earnings: ${estimatedEarnings} NEO`}</p>
                 </div>
               </div>
               <button className="btn btn-large btn-primary" style={{ marginLeft: "50%"}}>Save</button>
