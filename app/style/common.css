@@ -19,6 +19,7 @@ div {
 .margin-15-horizontal { margin-left: 15px; margin-right: 15px; }
 .margin-15-vertical { margin-top: 15px; margin-bottom: 15px; }
 
+
 input {
   border: 0px;
   height: 35px;
@@ -26,3 +27,13 @@ input {
   color: #6b7c93;
   width: 100%;
 }
+
+.columncontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-content: stretch;
+}
+
+.column { display: flex; margin-left: 15px; margin-right: 15px; }

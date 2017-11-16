@@ -60,6 +60,7 @@ class SavingsForm extends React.Component {
 
   componentWillMount() {
     if (!this.props.wallet.address) {
+      return; // TODO REMOVE
       alert('To see existings savings, wallet must be loaded!');
       this.props.history.push('/');
     }
@@ -72,80 +73,98 @@ class SavingsForm extends React.Component {
       <div className="window-content">
         <div className="pane-group">
           <div className="pane pane-one-third sidebar">
-            <div className="margin-15">
-              Create a new savings account and we will deduct each month the exact amount you entered.
+            <div className="center">
+              <div className="center" style={{ width: "50%"}}>
+                <p className="center margin-15-horizontal" style={{ marginLeft: "50px"}}>
+                  Create a new savings account and we will deduct each month the exact amount you entered.
+                </p>
+                <img
+                  style={{ marginBottom: "-50px"}}
+                  src="../resources/piggyanimated2.gif"
+                  alt="Piggy bank"
+                  height="250"
+                />
+              </div>
             </div>
 
+            <br />
+
             <form onSubmit={this.handleSubmit}>
-              <div className="form-group">
-                <label className="Input">
-                  Savings name <br />
-                  <input
-                    type="text"
-                    name="name"
-                    style={{ width: '280px' }}
-                    onChange={this.handleNameChange}
-                  />
-                </label>
+              <div className="columncontainer">
+                <div className="column">
+                  <div className="form-group">
+                    <label className="Input">
+                      Savings name <br />
+                      <input
+                        type="text"
+                        name="name"
+                        style={{ width: '280px' }}
+                        onChange={this.handleNameChange}
+                      />
+                    </label>
 
-                <br />
+                    <br />
 
-                <label className="Input">
-                  Address for withdraw <br />
-                  <input
-                    type="text"
-                    name="address"
-                    value={wallet && wallet.address}
-                    style={{ width: '280px' }}
-                    onChange={this.handleAddressChange}
-                  />
-                </label>
+                    <label className="Input">
+                      Address for withdraw <br />
+                      <input
+                        type="text"
+                        name="address"
+                        value={wallet && wallet.address}
+                        style={{ width: '280px' }}
+                        onChange={this.handleAddressChange}
+                      />
+                    </label>
+                  </div>
+
+                  <div className="form-group" style={{ width: '280px' }}>
+                    <label className="Input" style={{ width: '280px' }}>
+                      End time <br />
+                      <DatePicker
+                        selected={this.state.endTime}
+                        onChange={this.handleEndTimeChange}
+                        showTimeSelect
+                        dateFormat="LLL"
+                        timeIntervals={2}
+                      />
+                    </label>
+                  </div>
+
+                  <div className="form-group">
+                      <label className="Input">
+                        Interval between payments <br />
+                        <input
+                          type="text"
+                          name="interval"
+                          placeholder="Enter minutes for testing phase"
+                          style={{ width: '280px' }}
+                          onChange={this.handleIntervalChange}
+                        />
+                      </label>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="Input">
+                      Monthly amount (USD) <br />
+                      <input
+                        type="text"
+                        name="amount"
+                        placeholder="15"
+                        style={{ width: '280px' }}
+                        onChange={this.handleAmountChange}
+                      />
+                    </label>
+                  </div>
+                </div>
+
+                <div className="column">
+                  <p>Payment details</p>
+                  <Elements>
+                    <CardForm />
+                  </Elements>
+                </div>
               </div>
-
-              <div className="form-group">
-                <label className="Input">
-                  End time <br />
-                  <DatePicker
-                    selected={this.state.endTime}
-                    onChange={this.handleEndTimeChange}
-                    showTimeSelect
-                    dateFormat="LLL"
-                    timeIntervals={2}
-                  />
-
-                  <label className="Input">
-                    Interval between payments <br />
-                    <input
-                      type="text"
-                      name="interval"
-                      placeholder="Enter minutes for testing phase"
-                      style={{ width: '160px' }}
-                      onChange={this.handleIntervalChange}
-                    />
-                  </label>
-                </label>
-              </div>
-
-              <div className="form-group">
-                <div>Payment details</div>
-
-                <label className="Input">
-                  Monthly amount (USD) <br />
-                  <input
-                    type="text"
-                    name="amount"
-                    placeholder="15"
-                    style={{ width: '160px' }}
-                    onChange={this.handleAmountChange}
-                  />
-                </label>
-
-                <Elements>
-                  <CardForm />
-                </Elements>
-              </div>
-
-              <button className="btn btn-large btn-primary">Save</button>
+              <button className="btn btn-large btn-primary" style={{ marginLeft: "50%"}}>Save</button>
             </form>
           </div>
         </div>

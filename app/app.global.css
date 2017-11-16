@@ -24,7 +24,7 @@ h2 {
 }
 
 p {
-  font-size: 24px;
+  font-size: 18px;
 }
 
 li {
@@ -42,3 +42,5 @@ a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+
+.react-datepicker__input-container, .react-datepicker-wrapper { width: 100%; }
