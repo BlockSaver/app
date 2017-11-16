@@ -5,8 +5,6 @@ export class Header extends React.Component {
   render() {
     return (
       <header className="toolbar toolbar-header">
-        <h1 className="title">Home</h1>
-
         <div className="toolbar-actions">
           <Link to="/">
             <button className="btn btn-default">

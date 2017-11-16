@@ -31,18 +31,20 @@ class LoadWalletForm extends React.Component {
 
     if (wallet && wallet.address) {
       return (
-        <div>Successfully loaded: {wallet.address}.</div>
+        <div className="center"><br />Successfully loaded: {wallet.address}.</div>
       );
     }
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form
+        onSubmit={this.handleSubmit}
+        style={{ marginLeft: "20%", marginRight: "20%"}}
+      >
         <div className="form-control margin-15-vertical">
           <input
             type="text"
             name="wif"
             placeholder="Enter private key (WIF)"
             onChange={this.handleKeyChange}
-            style={{ width: '100%' }}
           />
         </div>
 

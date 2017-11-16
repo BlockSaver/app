@@ -23,10 +23,16 @@ class HomePage extends React.Component {
       <div className="window-content">
         <div className="pane-group">
           <div className="pane pane-one-third sidebar">
-            <button
-              onClick={this.onLoadWalletClick}
-              className="btn btn-large btn-default"
-            >Load wallet</button>
+            <div className="center column">
+              <img src="../resources/icon.png" width="300" alt="BlockSaver logo" />
+
+              <br />
+
+              <button
+                onClick={this.onLoadWalletClick}
+                className="btn btn-large btn-default"
+              >Load wallet</button>
+            </div>
 
             {this.state.showKeyInput ?
               <LoadWalletForm />

@@ -1,10 +1,19 @@
 div {
-  color: #000000;
+  color: #333;
 }
 
 .pane {
   padding: 15px;
 }
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.column { flex-direction: column; }
 
 .margin-15 { margin: 15px; }
 .margin-15-horizontal { margin-left: 15px; margin-right: 15px; }
@@ -15,4 +24,5 @@ input {
   height: 35px;
   padding: 10px;
   color: #6b7c93;
+  width: 100%;
 }
