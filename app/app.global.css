@@ -44,3 +44,6 @@ a:hover {
 }
 
 .react-datepicker__input-container, .react-datepicker-wrapper { width: 100%; }
+
+strong.expired { color: darkred; }
+strong.active { color: green; }

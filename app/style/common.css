@@ -13,12 +13,13 @@ div {
   align-self: center;
 }
 
-.column { flex-direction: column; }
+.column { display: flex; flex-direction: column; }
 
 .margin-15 { margin: 15px; }
 .margin-15-horizontal { margin-left: 15px; margin-right: 15px; }
+.margin-5-horizontal { margin-left: 5px; margin-right: 5px; }
 .margin-15-vertical { margin-top: 15px; margin-bottom: 15px; }
-
+.no-margin { margin: 0px; }
 
 input {
   border: 0px;
@@ -37,3 +38,5 @@ input {
 }
 
 .column { display: flex; margin-left: 15px; margin-right: 15px; }
+
+.list-group-item { display: flex; justify-content: space-between; }

@@ -60,7 +60,6 @@ class SavingsForm extends React.Component {
 
   componentWillMount() {
     if (!this.props.wallet.address) {
-      return; // TODO REMOVE
       alert('To see existings savings, wallet must be loaded!');
       this.props.history.push('/');
     }
